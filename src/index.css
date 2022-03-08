@@ -1,0 +1,43 @@
+html, body, #root {
+    height: 100vh;
+    width: 100vw;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+p {
+    margin: 8px 0;
+}
+
+a, a:visited {
+    color: #55f;
+}
+
+button {
+    border: none;
+    padding: 10px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table caption {
+    font-size: 120%;
+    padding-bottom: 16px;
+}
+
+table th, table td {
+    border: none;
+}
+
+table th {
+    padding: 8px;
+}
+
+table td {
+    padding: 16px;
+}
