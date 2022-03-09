@@ -41,3 +41,8 @@ table th {
 table td {
     padding: 16px;
 }
+
+table td.empty {
+    font-style: italic;
+    text-align: center;
+}

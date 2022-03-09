@@ -52,6 +52,6 @@ export const fetchData: (accessToken: AccessToken) => Promise<Data> =
         }));
 
         return {
-            pendingApprovals: pendingApprovals,
+            pendingApprovals,
         };
     };

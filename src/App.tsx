@@ -38,18 +38,22 @@ const PendingApprovalsBox: React.FC<{ pendingApprovals: ReadonlyArray<Approval>;
                 </tr>
                 </thead>
                 <tbody>{
-                    pendingApprovals.map((pendingApproval, index) => {
-                        const href = `https://dev.azure.com/${pendingApproval.organizationName}/${pendingApproval.projectName}/_build/results?buildId=${pendingApproval.buildId}`;
-                        return <tr key={index}>
-                            <td>{pendingApproval.organizationName}</td>
-                            <td>{pendingApproval.projectName}</td>
-                            <td>{pendingApproval.buildId}</td>
-                            <td>{pendingApproval.maybeStage}</td>
-                            <td>
-                                <a className="button" href={href} rel="noreferrer" target="_blank">Open in a new tab</a>
-                            </td>
+                    pendingApprovals.length > 0
+                        ? pendingApprovals.map((pendingApproval, index) => {
+                            const href = `https://dev.azure.com/${pendingApproval.organizationName}/${pendingApproval.projectName}/_build/results?buildId=${pendingApproval.buildId}`;
+                            return <tr key={index}>
+                                <td>{pendingApproval.organizationName}</td>
+                                <td>{pendingApproval.projectName}</td>
+                                <td>{pendingApproval.buildId}</td>
+                                <td>{pendingApproval.maybeStage}</td>
+                                <td>
+                                    <a className="button" href={href} rel="noreferrer" target="_blank">Open in a new tab</a>
+                                </td>
+                            </tr>
+                        })
+                        : <tr>
+                            <td className="empty" colSpan={5}>No pending approvals found</td>
                         </tr>
-                    })
                 }</tbody>
             </table>
         </Box>;
