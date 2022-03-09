@@ -21,7 +21,7 @@ const msalConfiguration: MsalConfiguration = {
         navigateToLoginRequestUrl: false,
     },
     cache: {
-        cacheLocation: "sessionStorage",
+        cacheLocation: "localStorage",
         storeAuthStateInCookie: false,
     }
 }
