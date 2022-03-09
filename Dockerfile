@@ -1,7 +1,7 @@
 FROM node:17.5.0-alpine AS build
 WORKDIR /home/node
 COPY --chown=node:node package.json yarn.lock ./
-RUN yarn install
+RUN yarn install --check-files
 COPY --chown=node:node tsconfig.json ./
 COPY --chown=node:node public ./public
 COPY --chown=node:node src ./src
