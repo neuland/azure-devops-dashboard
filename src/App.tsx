@@ -32,6 +32,7 @@ const PendingApprovalsBox: React.FC<{ pendingApprovals: ReadonlyArray<Approval>;
                 <tr>
                     <th>Organization</th>
                     <th>Project</th>
+                    <th>Pipeline</th>
                     <th>Build</th>
                     <th>Stage</th>
                     <th>Action</th>
@@ -44,6 +45,7 @@ const PendingApprovalsBox: React.FC<{ pendingApprovals: ReadonlyArray<Approval>;
                             return <tr key={index}>
                                 <td>{pendingApproval.organizationName}</td>
                                 <td>{pendingApproval.projectName}</td>
+                                <td>{pendingApproval.buildDefinitionName}</td>
                                 <td>{pendingApproval.buildId}</td>
                                 <td>{pendingApproval.maybeStage}</td>
                                 <td>
@@ -52,7 +54,7 @@ const PendingApprovalsBox: React.FC<{ pendingApprovals: ReadonlyArray<Approval>;
                             </tr>
                         })
                         : <tr>
-                            <td className="empty" colSpan={5}>No pending approvals found</td>
+                            <td className="empty" colSpan={6}>No pending approvals found</td>
                         </tr>
                 }</tbody>
             </table>

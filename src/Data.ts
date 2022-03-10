@@ -3,7 +3,12 @@ import {fetchProfile, meProfileId} from "./azure/devops/api/profile/profiles/Pro
 import {fetchAccounts, MemberId} from "./azure/devops/api/account/accounts/Account";
 import {deriveOrganizations, OrganizationName} from "./azure/devops/api/_custom/organization/Organization";
 import {fetchProjects, ProjectName} from "./azure/devops/api/core/projects/Project";
-import {BuildId, fetchBuilds, inProgress} from "./azure/devops/api/build/builds/Build";
+import {
+    BuildDefinitionName,
+    BuildId,
+    fetchBuilds,
+    inProgress
+} from "./azure/devops/api/build/builds/Build";
 import {checkpointApproval, fetchTimeline} from "./azure/devops/api/build/timeline/Timeline";
 import {deriveStage, Stage} from "./azure/devops/api/_custom/build/stages/Stage";
 
@@ -13,6 +18,7 @@ const promiseFlatMapAll: <A>(promises: ReadonlyArray<Promise<ReadonlyArray<A>>>)
 export interface Approval {
     organizationName: OrganizationName;
     projectName: ProjectName;
+    buildDefinitionName: BuildDefinitionName;
     buildId: BuildId;
     maybeStage: Stage | null;
 }
@@ -42,6 +48,7 @@ export const fetchData: (accessToken: AccessToken) => Promise<Data> =
                         const approval: Approval = {
                             organizationName: organization.name,
                             projectName: project.name,
+                            buildDefinitionName: inProgressBuild.definition.name,
                             buildId: inProgressBuild.id,
                             maybeStage,
                         }

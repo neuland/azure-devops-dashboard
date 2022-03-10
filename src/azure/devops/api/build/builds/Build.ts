@@ -15,18 +15,34 @@ const createBuildStatus: (value: string) => BuildStatus = (value) => value as Bu
 
 export const inProgress: BuildStatus = createBuildStatus("inProgress");
 
+const buildDefinitionNameTag = Symbol("BuildDefinitionName");
+export type BuildDefinitionName = string & { readonly _tag: typeof buildDefinitionNameTag; };
+const createBuildDefinitionName: (value: string) => BuildDefinitionName = (value) => value as BuildDefinitionName;
+
+export interface BuildDefinition {
+    name: BuildDefinitionName;
+}
+
 export interface Build {
     id: BuildId;
     status: BuildStatus;
+    definition: BuildDefinition;
 }
 
 const buildIdDecoder = Decoder.map(createBuildId)(Decoder.number);
 
 const buildStatusDecoder = Decoder.map(createBuildStatus)(Decoder.string);
 
+const buildDefinitionNameDecoder = Decoder.map(createBuildDefinitionName)(Decoder.string);
+
+const buildDefinitionDecoder = Decoder.struct({
+    name: buildDefinitionNameDecoder,
+});
+
 const buildDecoder = Decoder.struct({
     id: buildIdDecoder,
     status: buildStatusDecoder,
+    definition: buildDefinitionDecoder,
 });
 
 const buildsResponseDecoder = Decoder.struct({
