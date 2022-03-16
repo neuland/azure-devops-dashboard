@@ -6,8 +6,7 @@ COPY --chown=node:node tsconfig.json ./
 COPY --chown=node:node public ./public
 COPY --chown=node:node src ./src
 RUN yarn build
-FROM nginx:alpine
-RUN rm -rf /usr/share/nginx/html/*
+FROM nginxinc/nginx-unprivileged:alpine
 ENV NGINX_ENVSUBST_TEMPLATE_SUFFIX .conf
 COPY nginx.conf /etc/nginx/templates/default.conf.conf
 COPY --from=build --chown=root:root /home/node/build /usr/share/nginx/html
