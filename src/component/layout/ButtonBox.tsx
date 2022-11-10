@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ButtonBox: React.FC<{ buttonText: string; buttonOnClick: () => void; }> =
+export const ButtonBox: React.FC<{ buttonText: string; buttonOnClick: () => void; children?: React.ReactNode }> =
     ({buttonText, buttonOnClick, children}) => {
         return <div style={{
             backgroundColor: "#222",

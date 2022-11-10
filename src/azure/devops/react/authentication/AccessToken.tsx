@@ -85,7 +85,7 @@ const initialAccessTokenState: AccessTokenStateInitial = {
 const msalInstance = new PublicClientApplication(msalConfiguration);
 const AccessTokenContext = React.createContext<AccessTokenState>(initialAccessTokenState);
 
-export const AccessTokenProvider: React.FC =
+export const AccessTokenProvider: React.FC<{ children?: React.ReactNode }> =
     ({children}) => {
         const [accessTokenState, setAccessTokenState] = useState<AccessTokenState>(initialAccessTokenState);
 

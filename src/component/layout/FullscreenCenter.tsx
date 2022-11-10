@@ -1,6 +1,6 @@
 import React from "react";
 
-export const FullscreenCenter: React.FC =
+export const FullscreenCenter: React.FC<{ children?: React.ReactNode }> =
     ({children}) => {
         return <div style={{
             alignItems: "center",

@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Box: React.FC =
+export const Box: React.FC<{ children?: React.ReactNode}> =
     ({children}) => {
         return <div style={{
             backgroundColor: "#222",
